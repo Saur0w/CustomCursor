@@ -8,7 +8,7 @@ import { useRef } from "react";
 gsap.registerPlugin(useGSAP);
 
 export default function Landing() {
-    const landingRef = useRef(null);
+    const landingRef = useRef<HTMLDivElement>(null);
     return (
         <section className={styles.landing} ref={landingRef}>
             <div className={styles.mask}>
