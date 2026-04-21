@@ -1,34 +1,60 @@
+$bg: #0a0a0a;
+$surface: #ec4e39;
+$text: #c9b99a;
+$reveal: #0a0a0a;
+$meta: #3a3a3a;
+
 .landing {
+  position: relative;
   height: 100dvh;
   width: 100vw;
+  overflow: hidden;
+  background-color: $bg;
+  cursor: none;
+}
 
-  .para, .mask {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #afa18f;
-    font-size: 64px;
-    line-height: 66px;
-    cursor: default;
+%layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(24px, 6vw, 80px);
+}
 
-    p {
-      width: 1000px;
-      padding: 40px;
-    }
+%prose {
+  width: min(860px, 100%);
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: clamp(16px, 2.5vw, 28px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  cursor: default;
+}
 
-    span {
-      color: #ec4e39;
-    }
+.background {
+  @extend %layer;
+
+  p {
+    @extend %prose;
+    color: $text;
   }
+}
 
-  .mask {
-    mask-image: url('/mask.svg');
-    mask-repeat: no-repeat;
-    mask-size: 40px;
-    background: #ec4e39;
-    position: absolute;
-    color: black;
+.mask {
+  @extend %layer;
+  mask-image: url('/mask.svg');
+  mask-repeat: no-repeat;
+  mask-size: 40px;
+  mask-position: 0 0;
+  -webkit-mask-image: url('/mask.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 40px;
+  -webkit-mask-position: 0 0;
+  background-color: $surface;
+
+  p {
+    @extend %prose;
+    color: $reveal;
+    cursor: none;
   }
 }
